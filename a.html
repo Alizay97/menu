@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Restaurant Menu</title>
+    <link rel="stylesheet" href="a.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@400..700&display=swap" rel="stylesheet">
+</head>
+<body>
+
+    <div class="menu" >
+    <h1 class="head1">Restaurant Menu</h1>
+    <P class="p1">Select food item an their quantity to calculatethe total price.</P>
+    <h1 class="head2">Main Course</h1>
+   <p class="p2"> Chosse an item: <select style="width: 150px;" id="mainCourse" onchange="calculateTotal()">
+        <option value="--Select an item--">--Select an item--</option>
+        <option value="Chicken Karahi">Chicken Karahi($10)</option>
+        <option value="Chicken Qorma">Chicken Qorma($9)</option>
+        <option value="Chicken Biryani">Chicken Biryani($4)</option>
+        <option value="Chicken Chowmien">Chicken Chowmien($10)</option>
+    </select> &nbsp;&nbsp; Quantity: <input onchange="calculateTotal()" type="number" value="1" min="0" style="width: 30px;"  id="mainQuantity">
+    &nbsp;&nbsp;
+       <span id="mainTotal">Price: $0.00</span></p>
+   
+    <h1 class="head2">Deserts</h1>
+   <p class="p2"> Chosse an item: <select style="width: 150px;" id="dessert" onchange="calculateTotal()">
+        <option value="--Select an item--">--Select an item--</option>
+        <option value="Kalahari Desert">Kalahari Desert($10)</option>
+        <option value="Chalbi Desert">Chalbi Desert($7)</option>
+        <option value="Karoo Desert">Karoo Desert($8)</option>
+        <option value="Guban Desert">Guban Desert($9)</option>
+       
+       
+    </select>     &nbsp;&nbsp; Quantity: <input onchange="calculateTotal()" type="number" style="width: 30px;" value="1" min="0" id="dessertQuantity">   &nbsp;&nbsp;
+ 
+     <span id="dessertTotal">Price: $0.00</span></p>
+
+    <h1 class="head2">Drink</h1>
+    <p class="p2">Chosse an item: <select style="width: 150px;" id="drink"onchange="calculateTotal()">
+        <option value="--Select an item--">--Select an item--</option>
+        <option value="Water"> Water($10)</option>
+        <option value="Coffee"> Coffee($10)</option>
+        <option value="Tea">Tea($5)</option>
+        <option value="Milk">Milk($7)</option>
+    </select>    &nbsp;&nbsp;  Quantity: <input onchange="calculateTotal()" type="number" style="width: 30px;" value="1" min="0" id="drinkQuantity">    &nbsp;&nbsp;
+ 
+    <span id="drinkTotal"> Price: $0.00</span></p>
+
+    
+    <h2 class="head3" id="totalCost">Total Cost: $0.00</h3>
+
+</div>
+
+     <script>
+     
+        
+
+function calculateTotal(){
+    const mainCourse= document.getElementById('mainCourse').value;
+        const dessert= document.getElementById('dessert').value;
+        const drink= document.getElementById('drink').value;
+        const mainQuantity = parseInt(document.getElementById('mainQuantity').value);
+        const drinkQuantity = parseInt(document.getElementById('drinkQuantity').value);
+        const dessertQuantity = parseInt(document.getElementById('dessertQuantity').value);
+
+        let dessertPrice=0, mainPrice=0, drinkPrice=0;   
+
+        console.log("please print this");
+
+    switch(mainCourse){
+        case 'Chicken Karahi':
+        mainPrice= 10; 
+            break;
+
+            case 'Chicken Qorma':
+            mainPrice= 9; 
+            break;
+
+            case 'Chicken Biryani':
+            mainPrice= 4; 
+            break;
+
+            case 'Chicken Chowmien':
+            mainPrice= 10; 
+            break;
+            default:
+            mainPrice =0;
+    }
+
+    switch(dessert){
+        case 'Kalahari Desert':
+        dessertPrice= 10; 
+            break;
+
+            case 'Chalbi Desert':
+            dessertPrice= 7;
+            break;
+
+            case 'Guban Desert':
+            dessertPrice= 9;
+            break;
+
+            case 'Karoo Desert':
+            dessertPrice= 8;
+            break;
+            
+
+         
+
+            default:
+            dessertPrice=0;
+    }
+
+    switch(drink){
+        case 'Water':
+        drinkPrice= 10;
+            break;
+
+            case 'Coffee':
+            drinkPrice= 10;
+            break;
+
+            case 'Tea':
+            drinkPrice= 5;
+            break;
+
+            case 'Milk':
+            drinkPrice= 7;
+            break;
+            default:
+            drinkPrice=0;
+    }
+
+    const mainTotal = mainPrice * mainQuantity;
+          const dessertTotal = dessertPrice * dessertQuantity;
+          const drinkTotal = drinkPrice * drinkQuantity;
+   const total = mainTotal + dessertTotal + drinkTotal ;
+
+   document.getElementById("mainTotal").innerText = "$" + mainTotal.toFixed(2);
+          document.getElementById("dessertTotal").innerText = "$" + dessertTotal.toFixed(2);
+          document.getElementById("drinkTotal").innerText = "$" + drinkTotal.toFixed(2);
+          document.getElementById("totalCost").innerText ="Total Cost: $" + total.toFixed(2);
+
+}
+
+
+
+
+     </script>
+</body>
+</html>
